@@ -1,0 +1,60 @@
+<ion-view>
+
+  <ion-nav-title>
+    Task Details
+  </ion-nav-title>
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <div class="bar bar-subheader bar-dark">
+    <div class="button-bar">
+      <button ng-if="task.active == true" class="button button-clear icon ion-edit" ng-click="editTask()"></button>
+      <button ng-if="task.active == true" class="button button-clear icon ion-archive" ng-click="archiveDialog()"></button>
+      <button class="button button-clear icon ion-trash-a" ng-click="deleteDialog()"></button>
+      <button ng-if="task.active == true" class="button button-clear icon ion-checkmark" ng-click="performDialog()"></button>
+      <button ng-if="task.active == false" class="button button-clear icon ion-refresh" ng-click="restoreDialog()"></button>
+    </div>
+  </div>
+  
+  <ion-content class="has-subheader">
+    
+    <div class="row">
+       <div class="col col-5"></div>
+       <div class="col col-90">
+         <div class="list">
+           <div class="item item-icon-left item-borderless item-text-wrap">
+             <i class="icon ion-clipboard" style="color:#ffa500"></i>
+             <b>Task</b><br>{{task.name}}
+           </div>
+           <div class="item item-icon-left item-borderless item-text-wrap">
+             <i class="icon ion-document-text" style="color:#ffa500"></i>
+             <b>Description</b><br>{{task.notes}}<span ng-if="task.notes == ''">None</span>
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-calendar" style="color:#ffa500"></i>
+             <b>Created</b><br>{{task.createdate | date: 'yyyy-MM-dd'}}
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-pinpoint" style="color:#ffa500"></i>
+             <b>Frequency</b><br>{{task.freq}}<span ng-if="task.freq == ''">N/A</span>
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-ribbon-b" style="color:#ffa500"></i>
+             <b>Reward Points</b><br>{{task.points}}
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-arrow-graph-up-right" style="color:#ffa500"></i>
+             <b>Times Performed</b><br>{{task.count}}
+           </div>
+         </div>
+       </div>
+       <div class="col col-5"></div>
+    </div>
+    
+  </ion-content>
+    
+</ion-view>

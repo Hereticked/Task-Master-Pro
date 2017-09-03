@@ -1,0 +1,14 @@
+    <div class="ngdialog-message">
+        <div>
+            <h3>Copy "{{goal.name}}"?</h3>
+        </div>
+        <p style="padding:5px;"></p>
+        <div>Copy this goal to the active <b>Goals</b> list?</div>
+        <p style="padding:5px;"></p>
+        <div><b>Note:</b> It is recommended that you edit the new goal's title to avoid confusing duplicate entries.</div>
+        <p style="padding:5px;"></p>
+        <div>
+           <button class="btn btn-primary btn-sm" id="btn-space" ng-click="compCopyGoal()">Confirm</button>
+           <button class="btn btn-danger btn-sm" id="btn-space" ng-click="closeThisDialog()">Cancel</button>
+        </div>
+    </div>

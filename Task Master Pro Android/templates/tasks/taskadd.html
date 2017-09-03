@@ -1,0 +1,42 @@
+<ion-modal-view>
+  <ion-header-bar align-title="center">
+    <h1 class="title">Enter Your Task</h1>
+    <div class="buttons">
+      <button class="button ion-close" ng-click="closeAddTask()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form id="taskForm" name="taskForm" role="form" ng-submit="submitTask()" novalidate>
+      <div class="list">
+       <div class="form-group" ng-class="{ 'has-error' : taskForm.name.$error.required && !taskForm.name.$pristine }">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Title</span>
+          <input type="text" id="name" name="name" ng-model="taskEntry.name" placeholder="(required)" required>
+          <span ng-show="taskForm.name.$error.required && !taskForm.name.$pristine" class="help-block" style="color:#ff0000">A title for your task is required.</span>
+        </label>
+       </div>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Description</span>
+          <input type="text" placeholder="(optional)" ng-model="taskEntry.notes">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Frequency</span>
+          <input type="text" placeholder="(optional)" ng-model="taskEntry.freq">
+        </label>
+       <div class="form-group" ng-class="{ 'has-error' : (taskForm.points.$error.required && !taskForm.points.$pristine) || (taskForm.points.$invalid && !taskForm.points.$pristine) }">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Reward Points</span>
+          <input type="number" min="0" max="100000" step="1" id="points" name="points" ng-model="taskEntry.points" required>
+          <span ng-show="taskForm.points.$error.required && !taskForm.points.$pristine" class="help-block" style="color:#ff0000">You must assign a value to Rewards Points.</span>
+          <span ng-show="taskForm.points.$error.min || taskForm.points.$error.max" class="help-block" style="color:#ff0000">Must be a number between 0 and 100,000.</span>
+          <span ng-show="taskForm.points.$invalid && !taskForm.points.$pristine && !taskForm.points.$error.required && !taskForm.points.$error.min && !taskForm.points.$error.max" class="help-block" style="color:#ff0000">
+              Must be a positive integer or zero.</span>
+        </label>
+       </div>
+        <label class="item">
+          <button class="button button-block button-positive" ng-disabled="taskForm.$invalid" type="submit">Submit</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,12 @@
+    <div class="ngdialog-message">
+        <div>
+            <h3>Claim "{{reward.name}}"?</h3>
+        </div>
+        <p style="padding:5px;"></p>
+        <div>Spend <b>{{reward.points}}</b> reward points to claim this reward?</div>
+        <p style="padding:5px;"></p>
+        <div>
+           <button class="button button-small button-positive" id="btn-space" ng-click="claimReward()">Confirm</button>
+           <button class="button button-small button-assertive" id="btn-space" ng-click="closeThisDialog()">Cancel</button>
+        </div>
+    </div>

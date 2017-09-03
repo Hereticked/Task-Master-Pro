@@ -1,0 +1,78 @@
+.orange-bg {
+    background-color: #ffa500 !important;
+    border-color: #ffa500 !important;
+ }
+#fix-thumb {
+    max-width: 70px;
+    max-height: 98px;
+}
+#fix-card {
+    min-height: 160px;
+}
+#fix-card2 {
+    text-align: left !important;
+    max-width: 480px;
+}
+#no-underline {
+    text-decoration: none;
+}
+#quote {
+    padding: 10px !important;
+}
+.vcenter {
+    display: flex !important;
+    align-items: center !important;
+}
+/* Responsive dialog boxes and trophy images */
+@media (max-width: 767px) {
+    .ngdialog-content {
+        width:90% !important;
+    }
+    .responsive-trophy{
+        width: 75%;
+    }
+}
+@media (min-width: 768px) {
+    .ngdialog-content {
+        width:50% !important;
+    }
+    .responsive-trophy{
+        max-width: 100%;
+        height: auto;
+    }
+    .center-content {
+        width:50% !important;
+        margin: auto;
+    }
+}
+#btn-space {
+    margin: 5px;
+}
+.no-color-change {
+    background-color: white !important;
+}
+.clist {
+    border-width: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.align-bottom {
+    display: inline-block; !important;
+    vertical-align: bottom; !important;
+    float: none; !important;
+}
+.left {
+    float: left !important;
+}
+.right {
+    float: right !important;
+}
+.big-icon1::before {
+    font-size: 32px !important;
+}
+.big-icon2::before {
+    font-size: 64px !important;
+}
+.whitebg {
+    background-color: #ffffff !important;
+}

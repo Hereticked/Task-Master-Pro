@@ -1,0 +1,54 @@
+<ion-modal-view>
+  <ion-header-bar align-title="center">
+    <h1 class="title">Enter Your Goal</h1>
+    <div class="buttons">
+      <button class="button ion-close" ng-click="closeAddGoal()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form id="goalForm" name="goalForm" role="form" ng-submit="submitGoal()" novalidate>
+      <div class="list">
+       <div class="form-group" ng-class="{ 'has-error' : goalForm.name.$error.required && !goalForm.name.$pristine }">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Title</span>
+          <input type="text" id="name" name="name" ng-model="goalEntry.name" placeholder="(required)" required>
+          <span ng-show="goalForm.name.$error.required && !goalForm.name.$pristine" class="help-block" style="color:#ff0000">A title for your goal is required.</span>
+        </label>
+       </div>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Description</span>
+          <input type="text" placeholder="(optional)" ng-model="goalEntry.notes">
+        </label>
+        <label class="item item-stacked-label">
+          <span class="input-label">Due Date</span>
+          <button class="button button-block button-balanced" type="button" ng-click="pickDate()">
+            <span ng-if="goalEntry.date == null">(optional)</span>
+            <span ng-if="goalEntry.date != null">{{goalEntry.date}}</span>
+          </button>
+        </label>
+       <div class="form-group" ng-class="{ 'has-error' : (goalForm.points.$error.required && !goalForm.points.$pristine) || (goalForm.points.$invalid && !goalForm.points.$pristine) }">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Reward Points</span>
+          <input type="number" min="0" max="100000" step="1" id="points" name="points" ng-model="goalEntry.points" required>
+          <span ng-show="goalForm.points.$error.required && !goalForm.points.$pristine" class="help-block" style="color:#ff0000">You must assign a value to Rewards Points.</span>
+          <span ng-show="goalForm.points.$error.min || goalForm.points.$error.max" class="help-block" style="color:#ff0000">Must be a number between 0 and 100,000.</span>
+          <span ng-show="goalForm.points.$invalid && !goalForm.points.$pristine && !goalForm.points.$error.required && !goalForm.points.$error.min && !goalForm.points.$error.max" class="help-block" style="color:#ff0000">
+              Must be a positive integer or zero.</span>
+        </label>
+       </div>
+        <label class="item item-input item-select">
+          <div class="input-label">Trophy</div>
+          <select ng-model="goalEntry.award">
+            <option value="0">None</option>
+            <option value="1">Bronze</option>
+            <option value="2">Silver</option>
+            <option value="3">Gold</option>
+          </select>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" ng-disabled="goalForm.$invalid" type="submit">Submit</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

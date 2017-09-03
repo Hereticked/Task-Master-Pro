@@ -1,0 +1,75 @@
+<ion-view>
+
+  <ion-nav-title>
+    Goal Details
+  </ion-nav-title>
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <div class="bar bar-subheader bar-dark">
+    <div class="button-bar">
+      <button class="button button-clear icon ion-trash-a" ng-click="deleteCompDialog()"></button>
+      <button class="button button-clear icon ion-paper-airplane" ng-click="copyDialog()"></button>
+    </div>
+  </div>
+  
+  <ion-content class="has-subheader">
+    
+    <div class="row">
+       <div class="col col-5"></div>
+       <div class="col col-90">
+         <div class="list">
+           <div class="item item-icon-left item-borderless item-text-wrap">
+             <i class="icon ion-flag" style="color:#ffa500"></i>
+             <b>Goal</b><br>{{goal.name}}
+           </div>
+           <div class="item item-icon-left item-borderless item-text-wrap">
+             <i class="icon ion-document-text" style="color:#ffa500"></i>
+             <b>Description</b><br>{{goal.notes}}<span ng-if="goal.notes == ''">None</span>
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-calendar" style="color:#ffa500"></i>
+             <b>Created</b><br>{{goal.createdate | date: 'yyyy-MM-dd'}}
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-clock" style="color:#ffa500"></i>
+             <b>Completed</b><br>{{goal.date | date: 'yyyy-MM-dd'}}
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-ribbon-b" style="color:#ffa500"></i>
+             <b>Reward Points Earned</b><br>{{goal.points}}
+           </div>
+           <div class="item item-icon-left item-borderless" ng-if="goal.award == '0'">
+             <i class="icon ion-trophy" style="color:#ffa500"></i>
+             <b>Trophy</b><br>None
+             <span ng-if="goal.award == '3'">Gold</span>
+             <span ng-if="goal.award == '2'">Silver</span>
+             <span ng-if="goal.award == '1'">Bronze</span>
+           </div>
+           <div ng-if="goal.award == '1'" align="center">
+             <p style="padding:10px;"></p>
+             <img class="responsive-trophy" ng-src="img/bronze.png">
+             <p style="padding:10px;"></p>
+           </div>
+           <div ng-if="goal.award == '2'" align="center">
+             <p style="padding:10px;"></p>
+             <img class="responsive-trophy" ng-src="img/silver.png">
+             <p style="padding:10px;"></p>
+           </div>
+           <div ng-if="goal.award == '3'" align="center">
+             <p style="padding:10px;"></p>
+             <img class="responsive-trophy" ng-src="img/gold.png">
+             <p style="padding:10px;"></p>
+           </div>
+         </div>
+       </div>
+       <div class="col col-5"></div>
+    </div>
+    
+  </ion-content>
+
+</ion-view>

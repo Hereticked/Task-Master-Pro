@@ -1,0 +1,68 @@
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li class="active">Rewards</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Rewards</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9" align="center">
+                <p style="padding:10px;"></p>
+                <a ui-sref="app.rewardadd" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-plus-sign"></span> Add Reward
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+            </div>
+            <div class="col-xs-12 col-sm-3 col-sm-pull-9" align="center">
+                <p style="padding:10px;"></p>
+                <button type="button" class="btn btn-primary" id="btn-disable">Sort Rewards</button>
+                <select ng-model="sort">
+                    <option ng-repeat="x in sortType" value="{{x.val}}">{{x.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+            </div> 
+            <div class="col-xs-12 col-sm-6">
+               <ul class="nav nav-pills center-pills">
+                  <li class="active"><a ui-sref="app.rewards">Active Rewards</a></li>
+                  <li><a ui-sref="app.rewards.arc">Archived Rewards</a></li>
+               </ul>
+               <p style="padding:25px;"></p>
+               <div class="tab-content">
+                  <div class="tab-pane fade in active">
+                       <div ng-if="!showRewards">
+                          <h3>{{message}}</h3>
+                       </div>
+                       <div class="list-group" ng-if="showRewards" ng-repeat="reward in filteredRewardList = (RewardList | filter:{active:true}) | orderBy:sort">
+                          <a ui-sref="app.rewarddetails({id: reward._id})" class="list-group-item">
+                          <span class="glyphicon glyphicon-gift" aria-hidden="true"></span> &ensp; {{reward.name}}</a>
+                       </div>
+                       <div ng-if="!filteredRewardList.length && showRewards" align="center">
+                          <h4>You currently have no active rewards.</h4>
+                       </div>
+                  </div>
+               </div>
+               <p style="padding:20px;"></p>
+               <div align="center">
+                  <a class="btn btn-primary" ui-sref="app">
+                  <span class="fa fa-home"></span> Home
+                  </a>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            </div>
+        </div>
+        
+    </div>

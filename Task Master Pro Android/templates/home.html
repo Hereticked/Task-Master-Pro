@@ -1,0 +1,73 @@
+<ion-view view-title="Task Master Pro">
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+   <ion-content class="center-content">
+     <a ui-sref="app.goals" id="no-underline">
+        <div class="card">
+            <div class="item item-divider">
+                Define Your Objectives
+            </div>
+            <div class="item item-thumbnail-left item-text-wrap">
+                <img ng-src="img/goal.png">
+                <h2>Goals</h2>
+                <p>Enter some basic info about your goals and you're on your way! Whether it's a project for work or school, improving your physical fitness or learning new skills, Task Master Pro can help you get there!</p>
+            </div>
+        </div>
+     </a>
+     <a ui-sref="app.tasks" id="no-underline">
+        <div class="card" id="fix-card">
+            <div class="item item-divider">
+                Stay On Track
+            </div>
+            <div class="item item-thumbnail-left item-text-wrap">
+                <img ng-src="img/task.png" id="fix-thumb">
+                <h2>Tasks</h2>
+                <p>List the activities you want to focus on in the tasks section. These can be anything from daily chores to specializied activities that help you get closer to your goals. Regardless of their purpose, performing tasks can earn you reward points!</p>
+            </div>
+        </div>
+     </a>
+     <a ui-sref="app.rewards" id="no-underline">
+        <div class="card">
+            <div class="item item-divider">
+                Envision Your Incentives
+            </div>
+            <div class="item item-thumbnail-left item-text-wrap">
+                <img ng-src="img/reward.png">
+                <h2>Rewards</h2>
+                <p>Specify some enticing rewards and you'll be motivated to do your best! Gain reward points by performing tasks and completing goals, then spend them on what you want. Go ahead, you earned it!</p>
+            </div>
+        </div>
+     </a>
+     <a ui-sref="app.cheeves" id="no-underline">
+        <div class="card">
+            <div class="item item-divider">
+                Enjoy The Journey
+            </div>
+            <div class="item item-thumbnail-left item-text-wrap">
+                <img ng-src="img/cheeve.png">
+                <h2>Achievements</h2>
+                <p>Progress takes hard work, but it's important to have fun as well. Unlock achievements as you learn to use Task Master Pro! Watch your star rating grow as you excel in each category!</p>
+            </div>
+        </div>
+     </a>
+     <a ui-sref="app.stats" id="no-underline">
+        <div class="card">
+            <div class="item item-divider">
+                Reflect On Your Progress
+            </div>
+            <div class="item item-thumbnail-left item-text-wrap">
+                <img ng-src="img/stats.png">
+                <h2>Statistics</h2>
+                <p>Task Master Pro keeps track of every action you take in order to give you a complete picture of your app use. No worries, your data is private and will not be shared with anyone!</p>
+            </div>
+        </div>
+     </a>
+       
+  </ion-content>
+    
+</ion-view>

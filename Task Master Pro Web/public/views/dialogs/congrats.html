@@ -1,0 +1,25 @@
+    <div class="ngdialog-message">
+        <div>
+            <h3>Congratulations!</h3>
+        </div>
+        <p style="padding:5px;"></p>
+        You achieved your goal! Great job!
+        <div ng-if="goal.award == '3'" align="center">
+            <p style="padding:5px;"></p>
+            <img src="images/gold.png" width="180" height="200">
+        </div>
+        <div ng-if="goal.award == '2'" align="center">
+            <p style="padding:5px;"></p>
+            <img src="images/silver.png" width="180" height="200">
+        </div>
+        <div ng-if="goal.award == '1'" align="center">
+            <p style="padding:5px;"></p>
+            <img src="images/bronze.png" width="180" height="200">
+        </div>
+        <p style="padding:5px;"></p>
+        Visit <b>Completed Goals</b> any time to bask in your victories!
+        <p style="padding:5px;"></p>
+        <div align="center">
+           <button class="btn btn-primary btn-sm" ui-sref="app.goals" ng-click="closeThisDialog()">Ok</button>
+        </div>
+    </div>

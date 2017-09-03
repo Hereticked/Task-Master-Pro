@@ -1,0 +1,64 @@
+<ion-view view-title="Options">
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <ion-content class="center-content">
+       
+    <div class="row">
+       <div class = "col col-5"></div>
+       <div class = "col col-90">
+           <div class="list">
+               <div class="item item-icon-left item-borderless item-text-wrap">
+                 <i class="icon ion-android-notifications" style="color:#ffa500"></i>
+                 <b>Notifications</b>
+               </div>
+               <div class="item item-borderless item-text-wrap">
+                 Allow Task Master Pro to send you periodic reminders to update your progress and stay on track!
+               </div>
+               <div class="item item-borderless item-text-wrap">
+                   <ion-radio ng-model="radio.choice" ng-change="setReminder()" ng-value=0>No Reminder</ion-radio>
+                   <ion-radio ng-model="radio.choice" ng-change="setReminder()" ng-value=1>Daily Reminder</ion-radio>
+                   <ion-radio ng-model="radio.choice" ng-change="setReminder()" ng-value=2>Weekly Reminder</ion-radio>
+                   <ion-radio ng-model="radio.choice" ng-change="setReminder()" ng-value=3>Monthly Reminder</ion-radio>
+              <!-- <ion-radio ng-model="radio.choice" ng-change="setReminder()" ng-value=4>Hourly Reminder</ion-radio>
+                   <ion-radio ng-model="radio.choice" ng-change="setReminder()" ng-value=5>Annoying Reminder</ion-radio> -->
+               </div>
+           </div>
+           <div class="list">
+               <div class="item item-icon-left item-borderless item-text-wrap">
+                 <i class="icon ion-loop" style="color:#ffa500"></i>
+                 <b>Reset App</b>
+               </div>
+               <div class="item item-borderless item-text-wrap">
+                 Delete all app data and reset to initial settings.
+               </div>
+               <div class="item item-borderless item-text-wrap">
+                   <ul class="list">
+                     <li class="item item-borderless item-toggle">
+                         Enable Reset
+                         <label class="toggle toggle-positive">
+                             <input type="checkbox" ng-model="toggle.checked">
+                             <div class="track">
+                                 <div class="handle"></div>
+                             </div>
+                         </label>
+                     </li>
+                   </ul>
+               </div>
+               <div class="item item-borderless item-text-wrap">
+                 <button class="button button-block button-positive" ng-disabled="!toggle.checked" ng-click="resetDialog()">Reset</button>
+               </div>
+           </div>
+       </div>
+       <div class="col col-5"></div>
+    </div>
+      
+    <p style="padding:20px;"></p>
+    
+  </ion-content>
+    
+</ion-view>

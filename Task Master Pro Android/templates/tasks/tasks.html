@@ -1,0 +1,55 @@
+<ion-view view-title="Tasks">
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <div class="bar bar-subheader bar-dark">
+      &nbsp;
+      <select ng-model="sort">
+        <option ng-repeat="x in sortType" value="{{x.val}}">{{x.name}}</option>
+      </select>
+      <button class="button button-clear icon ion-plus-circled pull-right" ng-click="addTask()"></button>
+  </div>
+    
+  <ion-tabs class="tabs-striped tabs-background-dark tabs-color-light">
+ 
+     <ion-tab title="Active" on-select="resetSort()">
+       <ion-nav-view>
+         <ion-content class="has-subheader">
+             <ion-list>                 
+              <ion-item ng-repeat="task in filteredTaskList1 = (TaskList | filter:{active:true}) | orderBy:sort" ng-click="targetTask(task.id)" ui-sref="app.taskdetails({id: task.id})">
+                  <i class="icon ion-clipboard" style="color:#ffa500"></i>
+                  &nbsp; {{task.name}}
+              </ion-item>
+             </ion-list>
+             <p style="padding:10px;"></p>
+             <div ng-if="filteredTaskList1.length == 0" align="center">
+                <h4>You currently have no active tasks.</h4>
+             </div>
+         </ion-content>
+       </ion-nav-view>
+     </ion-tab>
+
+     <ion-tab title="Archived" on-select="resetSort()">
+       <ion-nav-view>
+         <ion-content class="has-subheader">
+             <ion-list>
+              <ion-item ng-repeat="task in filteredTaskList2 = (TaskList | filter:{active:false}) | orderBy:sort" ng-click="targetTask(task.id)" ui-sref="app.taskdetails({id: task.id})">
+                  <i class="icon ion-clipboard" style="color:#ffa500"></i>
+                  &nbsp; {{task.name}}
+              </ion-item>
+             </ion-list>
+             <p style="padding:10px;"></p>
+             <div ng-if="filteredTaskList2.length == 0" align="center">
+                <h4>You currently have no archived tasks.</h4>
+             </div>
+         </ion-content>
+       </ion-nav-view>
+     </ion-tab>
+
+  </ion-tabs>
+
+</ion-view>

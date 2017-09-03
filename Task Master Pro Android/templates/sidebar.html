@@ -1,0 +1,58 @@
+<ion-side-menus>
+    
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-light orange-bg">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon black-font" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="mainContent"></ion-nav-view>
+  </ion-side-menu-content>
+    
+  <ion-side-menu side="left">
+     <ion-content class="orange-bg">
+      <div style="padding:10px">
+         <p><b>"{{randQuote.text}}"</b></p>
+         <p> &ensp; - &ensp; <i>{{randQuote.author}}</i></p>
+      </div>
+      <ion-list>
+        <ion-item menu-close ui-sref="app.home">
+          <i class="icon ion-home"></i>
+          &nbsp; Home
+        </ion-item>
+        <ion-item menu-close ui-sref="app.goals">
+          <i class="icon ion-flag"></i>
+          &nbsp; Goals
+        </ion-item>
+        <ion-item menu-close ui-sref="app.tasks">
+          <i class="icon ion-clipboard"></i>
+          &nbsp; Tasks
+        </ion-item>
+        <ion-item menu-close ui-sref="app.rewards">
+          <i class="icon ion-android-happy"></i>
+          &nbsp; Rewards
+        </ion-item>
+        <ion-item menu-close ui-sref="app.cheeves">
+          <i class="icon ion-android-checkbox-outline"></i>
+          &nbsp; Achievements
+        </ion-item>
+        <ion-item menu-close ui-sref="app.stats">
+          <i class="icon ion-stats-bars"></i>
+          &nbsp; Statistics
+        </ion-item>
+        <ion-item menu-close ui-sref="app.options">
+          <i class="icon ion-gear-a"></i>
+          &nbsp; Options
+        </ion-item>
+        <ion-item menu-close ui-sref="app.about">
+          <i class="icon ion-university"></i>
+          &nbsp; About
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+    
+</ion-side-menus>

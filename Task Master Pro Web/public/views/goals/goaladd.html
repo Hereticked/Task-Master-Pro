@@ -1,0 +1,73 @@
+    <div class="container">
+        
+        <div class="row">  
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li><a ui-sref="app.goals">Goals</a></li>
+                   <li class="active">Add Goal</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Add Goal</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-1">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <form class="form-horizontal" role="form" name="goalForm" ng-submit="submitGoal()" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : goalForm.name.$error.required && !goalForm.name.$pristine }">
+                        <label for="name" class="col-sm-2 control-label">Goal</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter a title (required)" ng-model="goalEntry.name" required>
+                            <span ng-show="goalForm.name.$error.required && !goalForm.name.$pristine" class="help-block">A title for your goal is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Enter a detailed description or some notes (optional)" ng-model="goalEntry.notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date" class="col-sm-2 control-label">Due Date</label>
+                        <div class="col-sm-10">
+                            <input datepicker-localdate type="text" class="form-control" id="date" name="date" placeholder="Enter a due date (optional)" ng-model="goalEntry.date"
+                            uib-datepicker-popup="yyyy-MM-dd" is-open="opened" ng-click="opened = !opened" datepicker-options="dateOptions" onkeydown="return false">
+                        </div>
+                    </div>
+                   <div class="form-group" ng-class="{ 'has-error' : (goalForm.points.$error.required && !goalForm.points.$pristine) || (goalForm.points.$invalid && !goalForm.points.$pristine) }">
+                        <label for="points" class="col-sm-2 control-label">Reward Points</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" min="0" max="100000" step="1" id="points" name="points" placeholder="Assign reward points (required)" ng-model="goalEntry.points" required>
+                            <span ng-show="goalForm.points.$error.required && !goalForm.points.$pristine" class="help-block">You must assign a value to Rewards Points.</span>
+                            <span ng-show="goalForm.points.$error.min || goalForm.points.$error.max" class="help-block">Rewards Points must be a number between 0 and 100,000.</span>
+                            <span ng-show="goalForm.points.$invalid && !goalForm.points.$pristine && !goalForm.points.$error.required && !goalForm.points.$error.min && !goalForm.points.$error.max"
+                               class="help-block">Rewards Points must be a positive integer or zero.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="award" class="col-sm-2 control-label">Trophy</label>
+                        <div class="col-sm-10">
+                            <label class="radio-inline"><input type="radio" name="award" id="award" ng-model="goalEntry.award" value="3">Gold</label>
+                            <label class="radio-inline"><input type="radio" name="award" id="award" ng-model="goalEntry.award" value="2">Silver</label>
+                            <label class="radio-inline"><input type="radio" name="award" id="award" ng-model="goalEntry.award" value="1">Bronze</label>
+                            <label class="radio-inline"><input type="radio" name="award" id="award" ng-model="goalEntry.award" value="0">None</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="btn-space" ng-disabled="goalForm.$invalid">Submit Goal</button>
+                            <a class="btn btn-danger" id="btn-space" ui-sref="app.goals">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-1">
+            </div>
+        </div>
+
+    </div>

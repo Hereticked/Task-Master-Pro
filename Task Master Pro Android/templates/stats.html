@@ -1,0 +1,61 @@
+<ion-view view-title="Statistics">
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <ion-content class="center-content">
+    
+     <p style="padding:10px;"></p>
+       
+     <div class="row align-bottom" style="font-size:150%"><!--
+    --><div class = "col col-33 align-bottom" align="center">
+           <img style="max-width:80%" ng-src="img/silver.png">
+           <p style="padding:5px;"></p>
+           {{silverCount}}
+       </div><!--
+    --><div class = "col col-33 align-bottom" align="center">
+           <img style="max-width:100%" ng-src="img/gold.png">
+           <p style="padding:5px;"></p>
+           {{goldCount}}
+       </div><!--
+    --><div class = "col col-33 align-bottom" align="center">
+           <img style="max-width:80%" ng-src="img/bronze.png">
+           <p style="padding:5px;"></p>
+           {{bronzeCount}}
+       </div><!--
+ --></div>
+   
+    <p style="padding:10px;"></p>
+    
+    <div class="row">
+       <div class = "col col-5"></div>
+       <div class = "col col-90">
+         <ion-list>
+             <ion-item><span class="left">Goals Added</span><span class="right">{{user.ltgoals}}</span></ion-item>
+             <ion-item><span class="left">Goals Completed</span><span class="right">{{user.ltcomps}}</span></ion-item>
+             <ion-item><span class="left">Goals Copied</span><span class="right">{{user.ltcopies}}</span></ion-item>
+             <ion-item><span class="left">Tasks Added</span><span class="right">{{user.lttasks}}</span></ion-item>
+             <ion-item><span class="left">Tasks Performed</span><span class="right">{{user.ltperfs}}</span></ion-item>
+             <ion-item><span class="left">Rewards Added</span><span class="right">{{user.ltrewards}}</span></ion-item>
+             <ion-item><span class="left">Rewards Claimed</span><span class="right">{{user.ltclaims}}</span></ion-item>
+             <ion-item><span class="left">Items Archived</span><span class="right">{{user.ltarcs}}</span></ion-item>
+             <ion-item><span class="left">Items Restored</span><span class="right">{{user.ltrests}}</span></ion-item>
+             <ion-item><span class="left">Items Edited</span><span class="right">{{user.ltedits}}</span></ion-item>
+             <ion-item><span class="left">Items Deleted</span><span class="right">{{user.ltdels}}</span></ion-item>
+             <ion-item><span class="left">Total Actions Taken</span><span class="right">{{user.ltacts}}</span></ion-item>
+             <ion-item><span class="left">Reward Points Earned</span><span class="right">{{user.ltrpoints}}</span></ion-item>
+             <ion-item><span class="left">Reward Points Spent</span><span class="right">{{user.ltrpoints - user.rpoints}}</span></ion-item>
+             <ion-item><span class="left">Trophies Earned</span><span class="right">{{user.trophies}}</span></ion-item>
+         </ion-list>    
+       </div>
+       <div class="col col-5"></div>
+    </div>
+      
+    <p style="padding:20px;"></p>
+    
+  </ion-content>
+    
+</ion-view>

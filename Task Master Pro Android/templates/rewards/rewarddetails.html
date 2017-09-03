@@ -1,0 +1,56 @@
+<ion-view>
+
+  <ion-nav-title>
+    Reward Details
+  </ion-nav-title>
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <div class="bar bar-subheader bar-dark">
+    <div class="button-bar">
+      <button ng-if="reward.active == true" class="button button-clear icon ion-edit" ng-click="editReward()"></button>
+      <button ng-if="reward.active == true" class="button button-clear icon ion-archive" ng-click="archiveDialog()"></button>
+      <button class="button button-clear icon ion-trash-a" ng-click="deleteDialog()"></button>
+      <button ng-if="reward.active == true" class="button button-clear icon ion-checkmark" ng-click="claimDialog()"></button>
+      <button ng-if="reward.active == false" class="button button-clear icon ion-refresh" ng-click="restoreDialog()"></button>
+    </div>
+  </div>
+  
+  <ion-content class="has-subheader">
+    
+    <div class="row">
+       <div class="col col-5"></div>
+       <div class="col col-90">
+         <div class="list">
+           <div class="item item-icon-left item-borderless item-text-wrap">
+             <i class="icon ion-android-happy" style="color:#ffa500"></i>
+             <b>Reward</b><br>{{reward.name}}
+           </div>
+           <div class="item item-icon-left item-borderless item-text-wrap">
+             <i class="icon ion-document-text" style="color:#ffa500"></i>
+             <b>Description</b><br>{{reward.notes}}<span ng-if="reward.notes == ''">None</span>
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-calendar" style="color:#ffa500"></i>
+             <b>Created</b><br>{{reward.createdate | date: 'yyyy-MM-dd'}}
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-ribbon-b" style="color:#ffa500"></i>
+             <b>Reward Point Cost</b><br>{{reward.points}}
+           </div>
+           <div class="item item-icon-left item-borderless">
+             <i class="icon ion-arrow-graph-up-right" style="color:#ffa500"></i>
+             <b>Times Claimed</b><br>{{reward.count}}
+           </div>
+         </div>
+       </div>
+       <div class="col col-5"></div>
+    </div>
+    
+  </ion-content>
+    
+</ion-view>

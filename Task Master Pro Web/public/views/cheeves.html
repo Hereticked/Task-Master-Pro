@@ -1,0 +1,261 @@
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li class="active">Achievements</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Achievements</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12" align="center">
+                <p style="padding:10px;"></p>
+                <button type="button" class="btn-lg btn-primary" id="btn-disable">
+                    <span class="fa fa-star"></span> Achievements Unlocked: {{user.cheeves}} / 50
+                </button>
+                <p style="padding:10px;"></p>
+                {{(user.cheeves * 2)}}%
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{user.cheeves * 2}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.cheeves * 2}}%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+            </div>
+            <div class="col-xs-12 col-sm-6" class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse1">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Goals</div>
+                  </div>
+                  <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in goalCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltgoals >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltgoals < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Added {{cheeve.val}} <span ng-if="cheeve.val == 1">goal!</span><span ng-if="cheeve.val > 1">goals!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse2">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Goal Completion</div>
+                  </div>
+                  <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in compCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltcomps >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltcomps < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Completed {{cheeve.val}} <span ng-if="cheeve.val == 1">goal!</span><span ng-if="cheeve.val > 1">goals!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse3">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Tasks</div>
+                  </div>
+                  <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in taskCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.lttasks >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.lttasks < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Added {{cheeve.val}} <span ng-if="cheeve.val == 1">task!</span><span ng-if="cheeve.val > 1">tasks!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse4">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Task Performance</div>
+                  </div>
+                  <div id="collapse4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in perfCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltperfs >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltperfs < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Performed {{cheeve.val}} <span ng-if="cheeve.val == 1">task!</span><span ng-if="cheeve.val > 1">tasks!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse5">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Rewards</div>
+                  </div>
+                  <div id="collapse5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in rewardCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltrewards >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltrewards < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Added {{cheeve.val}} <span ng-if="cheeve.val == 1">reward!</span><span ng-if="cheeve.val > 1">rewards!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse6">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Reward Claims</div>
+                  </div>
+                  <div id="collapse6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in claimCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltclaims >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltclaims < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Claimed {{cheeve.val}} <span ng-if="cheeve.val == 1">reward!</span><span ng-if="cheeve.val > 1">rewards!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse7">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Archives</div>
+                  </div>
+                  <div id="collapse7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in archCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltarcs >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltarcs < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Archived {{cheeve.val}} <span ng-if="cheeve.val == 1">goal, task or reward!</span><span ng-if="cheeve.val > 1">goals, tasks or rewards!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse8">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Actions Taken</div>
+                  </div>
+                  <div id="collapse8" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in actionCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.ltacts >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.ltacts < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Take {{cheeve.val}} actions in Task Master Pro!</i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapse9">
+                      <div class="panel-title"><span class="glyphicon glyphicon-check"></span> &ensp; Trophies</div>
+                  </div>
+                  <div id="collapse9" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="media" ng-repeat="cheeve in trophyCheeves">
+                          <div class="media-left media-middle">
+                              <span ng-if="user.lttrops >= cheeve.val">
+                                  <img class="media-object" src="images/stargold.png" alt="gold star" width="75" height="72">
+                              </span>
+                              <span ng-if="user.lttrops < cheeve.val">
+                                  <img class="media-object" src="images/starblank.png" alt="blank star" width="75" height="72">
+                              </span>
+                          </div>
+                          <div class="media-body" style="padding-left:20px">
+                              <h4 class="media-heading">{{cheeve.name}}</h4>
+                              <p style="padding:5px;"></p>
+                              <i>Earned {{cheeve.val}} <span ng-if="cheeve.val == 1">trophy!</span><span ng-if="cheeve.val > 1">trophies!</span></i>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+               <p style="padding:20px;"></p>
+               <div align="center">
+                  <a class="btn btn-primary" ui-sref="app">
+                  <span class="fa fa-home"></span> Home
+                  </a>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            </div>
+        </div>
+        
+    </div>

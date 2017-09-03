@@ -1,0 +1,63 @@
+    <div class="container">
+        
+        <div class="row">  
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li><a ui-sref="app.tasks">Tasks</a></li>
+                   <li class="active">Add Task</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Add Task</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-1">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <form class="form-horizontal" role="form" name="taskForm" ng-submit="submitTask()" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : taskForm.name.$error.required && !taskForm.name.$pristine }">
+                        <label for="name" class="col-sm-2 control-label">Task</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter a title (required)" ng-model="taskEntry.name" required>
+                            <span ng-show="taskForm.name.$error.required && !taskForm.name.$pristine" class="help-block">A title for your task is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Enter a detailed description or some notes (optional)" ng-model="taskEntry.notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date" class="col-sm-2 control-label">Frequency</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="freq" name="freq" placeholder="Enter how often you'd like to perform this task (optional)" ng-model="taskEntry.freq">
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : (taskForm.points.$error.required && !taskForm.points.$pristine) || (taskForm.points.$invalid && !taskForm.points.$pristine) }">
+                        <label for="points" class="col-sm-2 control-label">Reward Points</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" min="0" max="100000" step="1" id="points" name="points" placeholder="Assign reward points (required)" ng-model="taskEntry.points" required>
+                            <span ng-show="taskForm.points.$error.required && !taskForm.points.$pristine" class="help-block">You must assign a value to Rewards Points.</span>
+                            <span ng-show="taskForm.points.$error.min || taskForm.points.$error.max" class="help-block">Rewards Points must be a number between 0 and 100,000.</span>
+                            <span ng-show="taskForm.points.$invalid && !taskForm.points.$pristine && !taskForm.points.$error.required && !taskForm.points.$error.min && !taskForm.points.$error.max"
+                               class="help-block">Rewards Points must be a positive integer or zero.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="btn-space" ng-disabled="taskForm.$invalid">Submit Task</button>
+                            <a class="btn btn-danger" id="btn-space" ui-sref="app.tasks">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-1">
+            </div>
+        </div>
+
+    </div>

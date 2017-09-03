@@ -1,0 +1,73 @@
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li class="active">Goals</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Goals</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9" align="center">
+                <p style="padding:10px;"></p>
+                <a ui-sref="app.goaladd" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-plus-sign"></span> Add Goal
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+            </div>
+            <div class="col-xs-12 col-sm-3 col-sm-pull-9" align="center">
+                <p style="padding:10px;"></p>
+                <button type="button" class="btn btn-primary" id="btn-disable">Sort Goals</button>
+                <select ng-model="sort">
+                    <option ng-repeat="x in sortType2" value="{{x.val}}">{{x.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+            </div> 
+            <div class="col-xs-12 col-sm-6">
+               <ul class="nav nav-pills center-pills">
+                  <li><a ui-sref="app.goals">Active Goals</a></li>
+                  <li><a ui-sref="app.goals.arc">Archived Goals</a></li>
+                  <li class="active"><a ui-sref="app.goals.comp">Completed Goals</a></li>
+               </ul>
+               <p style="padding:25px;"></p>
+               <div class="tab-content">   
+                  <div class="tab-pane fade in active">
+                     <div ng-if="!showGoals">
+                        <h3>{{message}}</h3>
+                     </div>
+                     <div class="list-group" ng-if="showGoals" ng-repeat="goal in filteredGoalList = (GoalList | filter:{active:false, complete:true}) | orderBy:sort">
+                        <a ui-sref="app.compgoaldetails({id: goal._id})" class="list-group-item">
+                        <span class="glyphicon glyphicon-flag" ng-if="goal.award == '0'"></span>
+                        <span class="fa fa-trophy" ng-if="goal.award == '3'" style="color:#FFD700"></span>
+                        <span class="fa fa-trophy" ng-if="goal.award == '2'" style="color:#CCCCCC"></span>
+                        <span class="fa fa-trophy" ng-if="goal.award == '1'" style="color:#CD7F32"></span>
+                            &ensp; {{goal.name}}</a>
+                     </div>
+                     <div ng-if="!filteredGoalList.length && showGoals" align="center">
+                        <h4>You currently have no completed goals.</h4>
+                     </div>
+                  </div>
+               </div>
+               <p style="padding:20px;"></p>
+               <div align="center">
+                  <a class="btn btn-primary" ui-sref="app">
+                  <span class="fa fa-home"></span> Home
+                  </a>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            </div>
+        </div>
+        
+    </div>

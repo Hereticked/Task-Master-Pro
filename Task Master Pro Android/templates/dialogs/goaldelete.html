@@ -1,0 +1,12 @@
+    <div class="ngdialog-message">
+        <div>
+            <h3>Delete "{{goal.name}}"?</h3>
+        </div>
+        <p style="padding:5px;"></p>
+        <div>If you confirm, this goal will be <b>deleted permanently</b>.</div>
+        <p style="padding:5px;"></p>
+        <div>
+           <button class="button button-small button-positive" id="btn-space" ng-click="deleteGoal()">Confirm</button>
+           <button class="button button-small button-assertive" id="btn-space" ng-click="closeThisDialog()">Cancel</button>
+        </div>
+    </div>

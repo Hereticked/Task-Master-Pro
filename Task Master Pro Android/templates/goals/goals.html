@@ -1,0 +1,75 @@
+<ion-view view-title="Goals">
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <div class="bar bar-subheader bar-dark">
+      &nbsp;
+      <select ng-model="sort">
+        <option ng-repeat="x in sortMenu" value="{{x.val}}">{{x.name}}</option>
+      </select>
+      <button class="button button-clear icon ion-plus-circled pull-right" ng-click="addGoal()"></button>
+  </div>
+    
+  <ion-tabs class="tabs-striped tabs-background-dark tabs-color-light">
+ 
+     <ion-tab title="Active" on-select="selectSort(1)">
+       <ion-nav-view>
+         <ion-content class="has-subheader">
+             <ion-list>                 
+              <ion-item ng-repeat="goal in filteredGoalList1 = (GoalList | filter:{active:true}) | orderBy:sort" ng-click="targetGoal(goal.id)" ui-sref="app.goaldetails({id: goal.id})">
+                  <i class="icon ion-flag" style="color:#ffa500"></i>
+                  &nbsp; {{goal.name}}
+              </ion-item>
+             </ion-list>
+             <p style="padding:10px;"></p>
+             <div ng-if="filteredGoalList1.length == 0" align="center">
+                <h4>You currently have no active goals.</h4>
+             </div>
+         </ion-content>
+       </ion-nav-view>
+     </ion-tab>
+
+     <ion-tab title="Archived" on-select="selectSort(1)">
+       <ion-nav-view>
+         <ion-content class="has-subheader">
+             <ion-list>
+              <ion-item ng-repeat="goal in filteredGoalList2 = (GoalList | filter:{active:false, complete:false}) | orderBy:sort" ng-click="targetGoal(goal.id)" ui-sref="app.arcgoaldetails({id: goal.id})">
+                  <i class="icon ion-flag" style="color:#ffa500"></i>
+                  &nbsp; {{goal.name}}
+              </ion-item>
+             </ion-list>
+             <p style="padding:10px;"></p>
+             <div ng-if="filteredGoalList2.length == 0" align="center">
+                <h4>You currently have no archived goals.</h4>
+             </div>
+         </ion-content>
+       </ion-nav-view>
+     </ion-tab>
+
+     <ion-tab title="Completed" on-select="selectSort(2)">
+       <ion-nav-view>
+         <ion-content class="has-subheader">
+             <ion-list>
+              <ion-item ng-repeat="goal in filteredGoalList3 = (GoalList | filter:{active:false, complete:true}) | orderBy:sort" ng-click="targetGoal(goal.id)" ui-sref="app.compgoaldetails({id: goal.id})">
+                  <i class="icon ion-flag" ng-if="goal.award == '0'" style="color:#ffa500"></i>
+                  <i class="icon ion-trophy" ng-if="goal.award == '3'" style="color:#FFD700"></i>
+                  <i class="icon ion-trophy" ng-if="goal.award == '2'" style="color:#CCCCCC"></i>
+                  <i class="icon ion-trophy" ng-if="goal.award == '1'" style="color:#CD7F32"></i>
+                  &nbsp; {{goal.name}}
+              </ion-item>
+             </ion-list>
+             <p style="padding:10px;"></p>
+             <div ng-if="filteredGoalList3.length == 0" align="center">
+                <h4>You currently have no completed goals.</h4>
+             </div>
+         </ion-content>
+       </ion-nav-view>
+     </ion-tab>
+
+  </ion-tabs>
+
+</ion-view>

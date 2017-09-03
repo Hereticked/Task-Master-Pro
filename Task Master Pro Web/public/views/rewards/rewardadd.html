@@ -1,0 +1,57 @@
+    <div class="container">
+        
+        <div class="row">  
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li><a ui-sref="app.rewards">Rewards</a></li>
+                   <li class="active">Add Reward</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Add Reward</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-1">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <form class="form-horizontal" role="form" name="rewardForm" ng-submit="submitReward()" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : rewardForm.name.$error.required && !rewardForm.name.$pristine }">
+                        <label for="name" class="col-sm-2 control-label">Reward</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter a title (required)" ng-model="rewardEntry.name" required>
+                            <span ng-show="rewardForm.name.$error.required && !rewardForm.name.$pristine" class="help-block">A title for your task is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Enter a detailed description or some notes (optional)" ng-model="rewardEntry.notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : (rewardForm.points.$error.required && !rewardForm.points.$pristine) || (rewardForm.points.$invalid && !rewardForm.points.$pristine) }">
+                        <label for="points" class="col-sm-2 control-label">Reward Point Cost</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" min="0" max="100000" step="1" id="points" name="points" placeholder="Assign cost for this reward (required)" ng-model="rewardEntry.points" required>
+                            <span ng-show="rewardForm.points.$error.required && !rewardForm.points.$pristine" class="help-block">You must assign a value to Rewards Points.</span>
+                            <span ng-show="rewardForm.points.$error.min || rewardForm.points.$error.max" class="help-block">Rewards Points must be a number between 0 and 100,000.</span>
+                            <span ng-show="rewardForm.points.$invalid && !rewardForm.points.$pristine && !rewardForm.points.$error.required && !rewardForm.points.$error.min && !rewardForm.points.$error.max"
+                               class="help-block">Rewards Points must be a positive integer or zero.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="btn-space" ng-disabled="rewardForm.$invalid">Submit Reward</button>
+                            <a class="btn btn-danger" id="btn-space" ui-sref="app.rewards">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-1">
+            </div>
+        </div>
+
+    </div>

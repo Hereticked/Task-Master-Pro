@@ -1,0 +1,188 @@
+<ion-view view-title="Achievements">
+    
+  <ion-nav-buttons side="right">
+      <span class="vcenter">
+          <i class="icon ion-ribbon-b" style="font-size: 32px"></i><span style="font-size: 16px">{{user.rpoints}}</span> &nbsp;
+      </span>
+  </ion-nav-buttons>
+    
+  <ion-content class="center-content">
+       
+    <div class="row">
+       <div class = "col col-5"></div>
+       <div class = "col col-90">
+           
+         <p></p>
+           
+         <div align="center">
+           <img style="max-width:100%" ng-src="img/goldstars.png">
+           <h4><span>{{user.cheeves}} / 50</span></h4>
+         </div>
+           
+         <p style="padding:10px;"></p>
+           
+         <ion-list>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Goals
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in goalCheeves">
+                 <span ng-if="user.ltgoals >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltgoals < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Added {{cheeve.val}} <span ng-if="cheeve.val == 1">goal!</span><span ng-if="cheeve.val > 1">goals!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Goal Completion
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in compCheeves">
+                 <span ng-if="user.ltcomps >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltcomps < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Completed {{cheeve.val}} <span ng-if="cheeve.val == 1">goal!</span><span ng-if="cheeve.val > 1">goals!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Tasks
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in taskCheeves">
+                 <span ng-if="user.lttasks >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.lttasks < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Added {{cheeve.val}} <span ng-if="cheeve.val == 1">task!</span><span ng-if="cheeve.val > 1">tasks!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Task Performance
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in perfCheeves">
+                 <span ng-if="user.ltperfs >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltperfs < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Performed {{cheeve.val}} <span ng-if="cheeve.val == 1">task!</span><span ng-if="cheeve.val > 1">tasks!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Rewards
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in rewardCheeves">
+                 <span ng-if="user.ltrewards >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltrewards < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Added {{cheeve.val}} <span ng-if="cheeve.val == 1">reward!</span><span ng-if="cheeve.val > 1">rewards!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Reward Claims
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in claimCheeves">
+                 <span ng-if="user.ltclaims >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltclaims < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Claimed {{cheeve.val}} <span ng-if="cheeve.val == 1">reward!</span><span ng-if="cheeve.val > 1">rewards!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Archives
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in archCheeves">
+                 <span ng-if="user.ltarcs >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltarcs < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Archived {{cheeve.val}} <span ng-if="cheeve.val == 1">item!</span><span ng-if="cheeve.val > 1">items!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Actions Taken
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in actionCheeves">
+                 <span ng-if="user.ltacts >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.ltacts < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Take {{cheeve.val}} actions!
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>
+           <ion-item class="no-color-change" ng-click="showList = !showList" ng-class="{active: showList}">
+             <i class="icon" ng-class="showList ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Trophies
+             <ion-item class="clist" ng-show="showList">
+               <div class="item item-icon-left item-borderless item-text-wrap" ng-repeat="cheeve in trophyCheeves">
+                 <span ng-if="user.lttrops >= cheeve.val">
+                    <i class="icon ion-android-star" style="font-size:48px;color:#FFD700"></i>
+                 </span>
+                 <span ng-if="user.lttrops < cheeve.val">
+                    <i class="icon ion-android-star-outline" style="font-size:48px"></i>
+                 </span>
+                 <div style="padding-left:10px">
+                 <b>{{cheeve.name}}</b><br>
+                 Earned {{cheeve.val}} <span ng-if="cheeve.val == 1">trophy!</span><span ng-if="cheeve.val > 1">trophies!</span>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-item>    
+         </ion-list>
+           
+       </div>
+       <div class="col col-5"></div>
+    </div>
+      
+    <p style="padding:20px;"></p>
+    
+  </ion-content>
+    
+</ion-view>

@@ -1,0 +1,66 @@
+      <nav class="navbar navbar-inverse navbar-fixed-top custom-navbar" role="navigation">
+            <div class="container">
+                <!-- Collapsed Menu Button -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only"> Toggle Navigation </span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="app"><img style="max-width:80px; margin-top:-15px;" src="images/logo.png"></a>
+                </div>
+                <ul ng-if="loggedIn" class="nav navbar-nav navbar-right" id="stats">
+                    <li><a id="user stats"> &ensp;
+                    <span class="fa fa-university"></span> {{user.rpoints}} &nbsp;
+                    <span class="fa fa-star"></span> {{user.cheeves}} &nbsp;
+                    <span class="fa fa-trophy"></span> {{user.trophies}}
+                    </a></li>
+                </ul>
+                <!-- Collapsible Menu -->
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul ng-if="loggedIn" class="nav navbar-nav">
+                        <li><a ui-sref="app.goals"><span class="glyphicon glyphicon-flag"></span> Goals </a></li>
+                        <li><a ui-sref="app.tasks"><span class="glyphicon glyphicon-list-alt"></span> Tasks </a></li>
+                        <li><a ui-sref="app.rewards"><span class="glyphicon glyphicon-gift"></span> Rewards </a></li>
+                        <li><a ui-sref="app.cheeves"><span class="glyphicon glyphicon-check"></span> Achievements </a></li>
+                        <li><a ui-sref="app.stats"><span class="glyphicon glyphicon-signal"></span> Statistics </a></li>
+                    </ul>
+                    <ul ng-if="!loggedIn" class="nav navbar-nav" id="enable-pointer">
+                        <li><a ng-click="mustLogin()"><span class="glyphicon glyphicon-flag"></span> Goals </a></li>
+                        <li><a ng-click="mustLogin()"><span class="glyphicon glyphicon-list-alt"></span> Tasks </a></li>
+                        <li><a ng-click="mustLogin()"><span class="glyphicon glyphicon-gift"></span> Rewards </a></li>
+                        <li><a ng-click="mustLogin()"><span class="glyphicon glyphicon-check"></span> Achievements </a></li>
+                        <li><a ng-click="mustLogin()"><span class="glyphicon glyphicon-signal"></span> Statistics </a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-if="!loggedIn" id="enable-pointer"><a ng-click="openLogin()">
+                        <span class="glyphicon glyphicon-log-in"></span> Login </a>
+                        </li>
+                        <li ng-if="loggedIn" id="enable-pointer"><a ng-click="logOut()">
+                        <span class="glyphicon glyphicon-log-out"></span> Logout {{username}} </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+       </nav>
+
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-xs-12 col-sm-8">
+                    <h1>Task Master Pro</h1>
+                    <p style="padding:20px;"></p>
+                    <p id="quote"><b>The ultimate goal tracker, task manager and personal motivator!
+                        <span ng-if="!loggedIn"><a ng-click="openRegister()" id="enable-pointer" style="color:#feff4a">Sign up</a> today or 
+                        <a href="https://play.google.com/store/apps/details?id=com.ionicframework.tmpionic682610" target="_blank" style="color:#feff4a">grab the app</a> for your Android phone!</span>
+                        <span ng-if="loggedIn"><a href="https://play.google.com/store/apps/details?id=com.ionicframework.tmpionic682610" target="_blank" style="color:#feff4a">Grab the app</a> for your Android phone!</span>
+                    </b></p>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <p style="padding:10px;"></p>
+                    <img src="images/logo.png" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </header>

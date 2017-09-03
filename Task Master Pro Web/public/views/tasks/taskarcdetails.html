@@ -1,0 +1,66 @@
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li><a ui-sref="app.tasks.arc">Tasks</a></li>
+                   <li class="active">{{task.name}}</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>{{task.name}}</h3>
+               <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-6">
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-6" align="center">
+                <p style="padding:10px;"></p>
+                <button class="btn btn-danger" id="btn-space" ng-click="arcDeleteDialog()">
+                   <span class="glyphicon glyphicon-remove"></span> Delete
+                </button>
+                <button class="btn btn-success" id="btn-space" ng-click="arcRestoreDialog()">
+                  <span class="glyphicon glyphicon-ok"></span> Restore
+                </button>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+            </div> 
+            <div class="col-xs-12 col-sm-6">
+               <div ng-if="!showTask">
+                  <h3>{{message}}</h3>
+               </div>
+               <ul class="list-group" ng-if="showTask">
+                  <li class="list-group-item">
+                      <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> &nbsp;
+                      <b>Task:</b> &nbsp; {{task.name}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-file-text-o" aria-hidden="true"></span> &nbsp;
+                      <b>Description:</b> &nbsp; {{task.notes}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-calendar" aria-hidden="true"></span> &nbsp;
+                      <b>Frequency:</b> &nbsp; {{task.freq}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-university" aria-hidden="true"></span> &nbsp;
+                      <b>Reward Points:</b> &nbsp; {{task.points}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-dot-circle-o" aria-hidden="true"></span> &nbsp;
+                      <b>Times Performed:</b> &nbsp; {{task.count}}</li>
+               </ul>
+               <p style="padding:10px;"></p>
+               <div align="center">
+                  <a class="btn btn-primary" ui-sref="app.tasks.arc">
+                  <span class="fa fa-arrow-circle-left"></span> Back
+                  </a>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            </div>
+        </div>
+        
+    </div>

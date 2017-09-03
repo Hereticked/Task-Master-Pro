@@ -1,0 +1,63 @@
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li><a ui-sref="app.rewards.arc">Rewards</a></li>
+                   <li class="active">{{reward.name}}</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>{{reward.name}}</h3>
+               <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-6">
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-6" align="center">
+                <p style="padding:10px;"></p>
+                <button class="btn btn-danger" id="btn-space" ng-click="arcDeleteDialog()">
+                   <span class="glyphicon glyphicon-remove"></span> Delete
+                </button>
+                <button class="btn btn-success" id="btn-space" ng-click="arcRestoreDialog()">
+                  <span class="glyphicon glyphicon-ok"></span> Restore
+                </button>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+            </div> 
+            <div class="col-xs-12 col-sm-6">
+               <div ng-if="!showReward">
+                  <h3>{{message}}</h3>
+               </div>
+               <ul class="list-group" ng-if="showReward">
+                  <li class="list-group-item">
+                      <span class="glyphicon glyphicon-gift" aria-hidden="true"></span> &nbsp;
+                      <b>Reward:</b> &nbsp; {{reward.name}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-file-text-o" aria-hidden="true"></span> &nbsp;
+                      <b>Description:</b> &nbsp; {{reward.notes}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-university" aria-hidden="true"></span> &nbsp;
+                      <b>Reward Point Cost:</b> &nbsp; {{reward.points}}</li>
+                  <li class="list-group-item">
+                      <span class="fa fa-dot-circle-o" aria-hidden="true"></span> &nbsp;
+                      <b>Times Claimed:</b> &nbsp; {{reward.count}}</li>
+               </ul>
+               <p style="padding:20px;"></p>
+               <div align="center">
+                  <a class="btn btn-primary" ui-sref="app.rewards.arc">
+                  <span class="fa fa-arrow-circle-left"></span> Back
+                  </a>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            </div>
+        </div>
+        
+    </div>

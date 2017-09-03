@@ -1,0 +1,68 @@
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a ui-sref="app">Home</a></li>
+                   <li class="active">Tasks</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Tasks</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9" align="center">
+                <p style="padding:10px;"></p>
+                <a ui-sref="app.taskadd" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-plus-sign"></span> Add Task
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+            </div>
+            <div class="col-xs-12 col-sm-3 col-sm-pull-9" align="center">
+                <p style="padding:10px;"></p>
+                <button type="button" class="btn btn-primary" id="btn-disable">Sort Tasks</button>
+                <select ng-model="sort">
+                    <option ng-repeat="x in sortType" value="{{x.val}}">{{x.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-3">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+               <ul class="nav nav-pills center-pills">
+                  <li><a ui-sref="app.tasks">Active Tasks</a></li>
+                  <li class="active"><a ui-sref="app.tasks.arc">Archived Tasks</a></li>
+               </ul>
+               <p style="padding:25px;"></p>
+               <div class="tab-content">
+                  <div class="tab-pane fade in active">
+                     <div ng-if="!showTasks">
+                        <h3>{{message}}</h3>
+                     </div>
+                     <div class="list-group" ng-if="showTasks" ng-repeat="task in filteredTaskList = (TaskList | filter:{active:false}) | orderBy:sort">
+                        <a ui-sref="app.arctaskdetails({id: task._id})" class="list-group-item">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> &ensp; {{task.name}}</a>
+                     </div>
+                     <div ng-if="!filteredTaskList.length && showTasks" align="center">
+                        <h4>You currently have no archived tasks.</h4>
+                     </div>
+                  </div>
+               </div>
+               <p style="padding:20px;"></p>
+               <div align="center">
+                  <a class="btn btn-primary" ui-sref="app">
+                  <span class="fa fa-home"></span> Home
+                  </a>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+            </div>
+        </div>
+        
+    </div>

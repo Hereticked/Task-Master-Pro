@@ -1,0 +1,12 @@
+    <div class="ngdialog-message">
+        <div>
+            <h3>Perform "{{task.name}}"?</h3>
+        </div>
+        <p style="padding:5px;"></p>
+        <div ng-if="task.points > 0">Claim <b>{{task.points}}</b> reward points for performing this task?</div>
+        <p ng-if="task.points > 0" style="padding:5px;"></p>
+        <div>
+           <button class="button button-small button-positive" id="btn-space" ng-click="performTask()">Confirm</button>
+           <button class="button button-small button-assertive" id="btn-space" ng-click="closeThisDialog()">Cancel</button>
+        </div>
+    </div>
